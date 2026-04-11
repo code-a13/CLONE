@@ -1,4 +1,4 @@
-# 🕸️ Cloning Random Website UIs That I Visit
+# 🕸️ Rebuilding Random Website UIs That I Visit
 
 Yep, exactly what the title says. If I see a cool layout on the internet, I try to rebuild it from scratch using pure HTML and CSS. 
 
