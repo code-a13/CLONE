@@ -1,3 +1,19 @@
+/* --- Google Font Import --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* --- CSS Variables for Easy Theme Management --- */
+:root {
+    --bg-main: #000000;
+    --bg-sidebar: #0a0a0a;
+    --border-color: #27272a;
+    --item-bg: #18181b;
+    --item-hover-bg: #27272a;
+    --text-primary: #ffffff;
+    --text-muted: #a1a1aa;
+    --accent-color: #ffffff;
+}
+
+/* --- Global Reset --- */
 * {
     margin: 0;
     padding: 0;
@@ -5,88 +21,121 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background-color: #000;
-    color: #fff;
-    overflow: hidden; 
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    overflow: hidden; /* Prevents body scrolling, keeps it feeling like an app */
 }
 
+/* --- Dashboard Main Layout --- */
 .dashboard {
     display: flex;
-    height: 100vh; 
+    height: 100vh;
+    width: 100vw;
 }
 
-/* SIDEBAR STYLES */
+/* --- Sidebar Styles --- */
 .sidebar {
-    width: 280px; 
-    background-color: #111;
-    border-right: 1px solid #333;
+    width: 280px;
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
 }
 
 .sidebar-header {
-    padding: 25px 20px;
-    border-bottom: 1px solid #333;
+    padding: 24px 20px;
+    border-bottom: 1px solid var(--border-color);
 }
 
 .sidebar-header h2 {
-    font-size: 1.2rem;
-    letter-spacing: 1px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
 }
 
 .sidebar-header p {
-    color: #888;
+    color: var(--text-muted);
     font-size: 0.85rem;
-    margin-top: 5px;
+    margin-top: 6px;
+    font-weight: 400;
 }
 
-/* THE MENU LIST */
+/* --- The Menu List --- */
 .clone-list {
     list-style: none;
-    padding: 20px;
-    overflow-y: auto; 
+    padding: 16px;
+    overflow-y: auto; /* Allows scrolling if list gets too long */
+    flex-grow: 1;
 }
 
 .clone-list li {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
-/* THE PERFECT FLEX ALIGNMENT (No Duplicates!) */
+/* --- The Perfect Flex Alignment & Hover --- */
 .clone-list a {
-    display: flex;           
-    align-items: center;     
-    gap: 12px;               
-    padding: 12px 15px;
-    background-color: #1e1e1e;
-    color: #ddd;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background-color: transparent; /* Changed from grey to blend with sidebar */
+    color: var(--text-muted);
     text-decoration: none;
-    border-radius: 6px;
-    transition: all 0.3s ease;
+    border-radius: 8px;
+    transition: all 0.25s ease;
     font-weight: 500;
+    font-size: 0.95rem;
 }
 
+/* Premium Dark Mode Hover Effect */
 .clone-list a:hover {
-    background-color: #f1f1f1; 
-    color: #ff0000;
-    transform: translateX(5px); 
+    background-color: var(--item-hover-bg);
+    color: var(--accent-color);
+    transform: translateX(6px); /* Smooth slide effect */
 }
 
-/* THE SIDEBAR ICON FIX */
+/* --- Sidebar Icon Sizing --- */
 .sidebar-icon {
-    height: 20px; 
-    width: auto;
-    object-fit: contain; 
+    height: 20px;
+    width: 20px;
+    object-fit: contain;
+    opacity: 0.8; /* Slightly faded */
+    transition: opacity 0.25s ease;
 }
 
-/* VIEWER STYLES */
+.clone-list a:hover .sidebar-icon {
+    opacity: 1; /* Icon brightens on hover */
+}
+
+/* --- Custom Mac-OS Style Scrollbar for the list --- */
+.clone-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.clone-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.clone-list::-webkit-scrollbar-thumb {
+    background-color: #3f3f46;
+    border-radius: 10px;
+}
+
+.clone-list::-webkit-scrollbar-thumb:hover {
+    background-color: #52525b;
+}
+
+/* --- Main Viewer Styles --- */
 .viewer {
-    flex: 1; 
-    background-color: #000;
+    flex: 1; /* Takes up all remaining space */
+    background-color: var(--bg-main);
+    position: relative;
 }
 
 iframe {
     width: 100%;
     height: 100%;
-    border: none; 
+    border: none;
+    background-color: #ffffff; /* Fallback for sites with transparent backgrounds */
 }
